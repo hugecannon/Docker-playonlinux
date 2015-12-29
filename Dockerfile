@@ -1,13 +1,12 @@
-FROM ubuntu:14.04
-MAINTAINER Joris Schalk
+FROM ubuntu:15.04
+MAINTAINER Hugh Cannon
 
 RUN dpkg --add-architecture i386
 RUN apt-get install -y software-properties-common && add-apt-repository -y ppa:ubuntu-wine/ppa
 RUN apt-get update -y
 
 #Install Wine to get rid of a few notification in playonlinux
-RUN apt-get install -qy wine1.7 winetricks wget libcanberra-gtk-module gettext
-# gettext libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libfreetype6:i386 libcanberra-gtk-module
+RUN apt-get install -qy wine1.7 winetricks wget libcanberra-gtk-module gettext libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libfreetype6:i386 libcanberra-gtk-module
 
 #Install playonlinux (instructions on site)
 RUN wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
